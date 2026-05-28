@@ -14,6 +14,10 @@ app.get("/health", (_req, res) => {
   res.json({ ok: true, service: "outfit-recommender-app" });
 });
 
+function isFiniteNumber(value: unknown): value is number {
+  return typeof value === "number" && Number.isFinite(value);
+}
+
 app.post("/recommend", (req, res) => {
   const input = req.body as RecommendationInput;
 
@@ -23,9 +27,30 @@ app.post("/recommend", (req, res) => {
     });
   }
 
-  if (typeof input.climate.temperatureC !== "number") {
+  const { temperatureC, humidityPercent, rainChancePercent, windKmph } =
+    input.climate;
+
+  if (!isFiniteNumber(temperatureC)) {
     return res.status(400).json({
       error: "climate.temperatureC must be a number"
+    });
+  }
+
+  if (!isFiniteNumber(humidityPercent)) {
+    return res.status(400).json({
+      error: "climate.humidityPercent must be a number"
+    });
+  }
+
+  if (!isFiniteNumber(rainChancePercent)) {
+    return res.status(400).json({
+      error: "climate.rainChancePercent must be a number"
+    });
+  }
+
+  if (!isFiniteNumber(windKmph)) {
+    return res.status(400).json({
+      error: "climate.windKmph must be a number"
     });
   }
 

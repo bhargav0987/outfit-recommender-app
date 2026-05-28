@@ -36,29 +36,22 @@ function itemFitsInput(item: ClothingItem, input: RecommendationInput): boolean 
 
 function scoreItem(item: ClothingItem, input: RecommendationInput): number {
   let score = 0;
-  const reasons: string[] = [];
 
   if (input.climate.humidityPercent >= 65 && item.breathable) {
     score += 15;
-    reasons.push("breathable for humid weather");
   }
 
   if (input.climate.rainChancePercent >= 50 && item.rainFriendly) {
     score += 15;
-    reasons.push("rain friendly");
   }
 
   if (input.climate.windKmph >= 25 && item.windFriendly) {
     score += 10;
-    reasons.push("handles windy weather");
   }
 
   const target = occasionFormalityTarget[input.occasion] ?? 5;
   const gap = Math.abs(item.formality - target);
   score += Math.max(0, 20 - gap * 3);
-  if (gap <= 1) {
-    reasons.push("formality fits occasion");
-  }
 
   if (input.preferredColors?.some((color) => item.colors.includes(color))) {
     score += 8;
@@ -68,7 +61,7 @@ function scoreItem(item: ClothingItem, input: RecommendationInput): number {
     score -= 10;
   }
 
-  return score + reasons.length;
+  return score;
 }
 
 function pickBestByCategory(
