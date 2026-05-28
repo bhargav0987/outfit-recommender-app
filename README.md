@@ -5,6 +5,7 @@ A TypeScript + Express app with a connected frontend UI that recommends outfits 
 ## What this MVP includes
 
 - Browser UI for entering weather and occasion details
+- Automatic weather auto-fill from user location
 - Rule-based recommendation engine
 - Occasion-aware and weather-aware scoring
 - Gender-aware (without hardcoded stereotypes) catalog filtering
