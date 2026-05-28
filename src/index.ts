@@ -8,6 +8,7 @@ const port = Number(process.env.PORT) || 4000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static("public"));
 
 app.get("/health", (_req, res) => {
   res.json({ ok: true, service: "outfit-recommender-app" });

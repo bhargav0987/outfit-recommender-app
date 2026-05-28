@@ -1,13 +1,14 @@
 # Outfit Recommender App
 
-A TypeScript + Express API that recommends outfits for men and women based on climate and occasion.
+A TypeScript + Express app with a connected frontend UI that recommends outfits for men and women based on climate and occasion.
 
 ## What this MVP includes
 
+- Browser UI for entering weather and occasion details
 - Rule-based recommendation engine
 - Occasion-aware and weather-aware scoring
 - Gender-aware (without hardcoded stereotypes) catalog filtering
-- REST API endpoint to request outfit suggestions
+- REST API endpoint used by the frontend
 
 ## Tech stack
 
@@ -23,6 +24,7 @@ npm run dev
 ```
 
 Server starts at `http://localhost:4000`.
+Open `http://localhost:4000` in your browser to use the UI.
 
 ## API
 

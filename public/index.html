@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Outfit Recommender</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="card">
+        <h1>Outfit Recommender</h1>
+        <p class="subtitle">Get outfit suggestions by climate and occasion.</p>
+
+        <form id="recommend-form">
+          <div class="grid">
+            <label>
+              Gender
+              <select name="gender" required>
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+                <option value="any">Any</option>
+              </select>
+            </label>
+
+            <label>
+              Occasion
+              <select name="occasion" required>
+                <option value="casual">Casual</option>
+                <option value="business">Business</option>
+                <option value="formal">Formal</option>
+                <option value="party">Party</option>
+                <option value="wedding">Wedding</option>
+                <option value="travel">Travel</option>
+                <option value="workout">Workout</option>
+              </select>
+            </label>
+
+            <label>
+              Temperature (C)
+              <input type="number" name="temperatureC" required value="27" />
+            </label>
+
+            <label>
+              Humidity (%)
+              <input type="number" name="humidityPercent" required value="65" min="0" max="100" />
+            </label>
+
+            <label>
+              Rain Chance (%)
+              <input type="number" name="rainChancePercent" required value="35" min="0" max="100" />
+            </label>
+
+            <label>
+              Wind (km/h)
+              <input type="number" name="windKmph" required value="12" min="0" />
+            </label>
+
+            <label>
+              Preferred Colors (comma-separated)
+              <input type="text" name="preferredColors" placeholder="navy, black" />
+            </label>
+
+            <label>
+              Avoid Colors (comma-separated)
+              <input type="text" name="avoidColors" placeholder="white" />
+            </label>
+          </div>
+
+          <button type="submit">Recommend Outfit</button>
+        </form>
+      </section>
+
+      <section class="card" id="result-card">
+        <h2>Recommendation</h2>
+        <p id="status-text">Submit inputs to get recommendations.</p>
+        <div id="result"></div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
